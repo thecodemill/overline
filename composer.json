@@ -1,0 +1,19 @@
+{
+    "name": "thecodemill/overline",
+    "autoload": {
+        "psr-4": {
+            "TheCodeMill\\Overline\\": "src/"
+        }
+    },
+    "require": {
+        "markrogoyski/math-php": "^0.52.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TheCodeMill\\Overline\\Tests\\": "tests/"
+        }
+    }
+}
