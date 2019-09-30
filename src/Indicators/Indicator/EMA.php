@@ -6,7 +6,7 @@ use MathPHP\Statistics\Average;
 use TheCodeMill\Overline\Data\Series\Scalar;
 use TheCodeMill\Overline\Data\SeriesContract;
 use TheCodeMill\Overline\Indicators\Indicator;
-use TheCodeMill\Overline\Indicators\Input\Number;
+use TheCodeMill\Overline\Indicators\Setting\Number;
 use TheCodeMill\Overline\Data\Point\Scalar as ScalarPoint;
 
 class EMA extends Indicator
@@ -19,11 +19,11 @@ class EMA extends Indicator
     protected $inputSeriesClass = Scalar::class;
 
     /**
-     * Return the indicator's supported inputs.
+     * Return the indicator's supported settings.
      *
      * @return array
      */
-    public function defineInputs() : array
+    public function defineSettings() : array
     {
         return [
             'length' => (new Number)->min(1)->max(1000)->default(14),
@@ -40,7 +40,7 @@ class EMA extends Indicator
     {
         $output = Scalar::make([]);
 
-        $length = $this->getInput('length');
+        $length = $this->getSetting('length');
 
         $values = $series->map(function ($point) {
             return $point->getY();

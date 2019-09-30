@@ -2,7 +2,7 @@
 
 namespace TheCodeMill\Overline\Indicators;
 
-interface InputContract
+interface SettingContract
 {
     /**
      * Set the default value fluently.
@@ -10,7 +10,7 @@ interface InputContract
      * @param mixed $default
      * @return self
      */
-    public function default($default) : InputContract;
+    public function default($default) : SettingContract;
 
     /**
      * Set the required flag fluently.
@@ -18,5 +18,5 @@ interface InputContract
      * @param bool $required
      * @return self
      */
-    public function required(bool $required = true) : InputContract;
+    public function required(bool $required = true) : SettingContract;
 }
