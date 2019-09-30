@@ -14,27 +14,27 @@ interface IndicatorContract
     public function getInputSeriesClass() : string;
 
     /**
-     * Return the indicator's supported inputs.
+     * Return the indicator's supported settings.
      *
      * @return array
      */
-    public function defineInputs() : array;
+    public function defineSettings() : array;
 
     /**
-     * Return the input value(s).
+     * Return the settings value(s).
      *
      * @param string $key
      * @return array
      */
-    public function getInput(string $key = null);
+    public function getSetting(string $key = null);
 
     /**
-     * Validate and set the indicator's input value(s).
+     * Validate and set the indicator's settings value(s).
      *
      * @param array $values
      * @return self
      */
-    public function setInput(array $values) : IndicatorContract;
+    public function setSetting(array $values) : IndicatorContract;
 
     /**
      * Compute the indicator's output and return as a series.

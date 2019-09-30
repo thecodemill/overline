@@ -14,36 +14,36 @@ abstract class Indicator implements IndicatorContract
     protected $inputSeriesClass;
 
     /**
-     * Indicator input value(s).
+     * Indicator settings value(s).
      *
      * @var array
      */
-    protected $input = [];
+    protected $settings = [];
 
     /**
      * Instatiate the indicator.
      *
-     * @param array $input
+     * @param array $settings
      * @return void
      */
-    public function __construct(array $input = [])
+    public function __construct(array $settings = [])
     {
-        $this->setInput($input);
+        $this->setSetting($settings);
     }
 
     /**
      * Instantiate an indicator statically.
      *
-     * @param array $input
+     * @param array $settings
      * @return \TheCodeMill\Overline\Indicators\IndicatorContract
      */
-    public static function make(array $input = []) : IndicatorContract
+    public static function make(array $settings = []) : IndicatorContract
     {
-        return new static($input);
+        return new static($settings);
     }
 
     /**
-     * Return the expected inpur series base class.
+     * Return the expected input series base class.
      *
      * @return string
      * @throws \RuntimeException
@@ -58,50 +58,50 @@ abstract class Indicator implements IndicatorContract
     }
 
     /**
-     * Return the indicator's supported inputs.
+     * Return the indicator's supported settings.
      *
      * @return array
      */
-    public function defineInputs() : array
+    public function defineSettings() : array
     {
         return [];
     }
 
     /**
-     * Return the input value(s).
+     * Return the settings value(s).
      *
      * @param string $key
      * @return array
      */
-    public function getInput(string $key = null)
+    public function getSetting(string $key = null)
     {
         if ($key !== null) {
-            if (!array_key_exists($key, $this->input)) {
-                throw new \InvalidArgumentException(sprintf('Input "%s" not defined', $key));
+            if (!array_key_exists($key, $this->settings)) {
+                throw new \InvalidArgumentException(sprintf('Setting "%s" not defined', $key));
             }
 
-            return $this->input[$key];
+            return $this->settings[$key];
         }
 
-        return $this->input;
+        return $this->settings;
     }
 
     /**
-     * Validate and set the indicator's input value(s).
+     * Validate and set the indicator's settings value(s).
      *
      * @param array $values
      * @return self
      * @throws \InvalidArgumentException
      */
-    public function setInput(array $values) : IndicatorContract
+    public function setSetting(array $values) : IndicatorContract
     {
-        $this->input = [];
+        $this->settings = [];
 
-        foreach ($this->defineInputs() as $key => $input) {
-            if (!$input->validate($values[$key] ?? null)) {
-                throw new \InvalidArgumentException(sprintf('Invalid input: %s', $key));
+        foreach ($this->defineSettings() as $key => $setting) {
+            if (!$setting->validate($values[$key] ?? null)) {
+                throw new \InvalidArgumentException(sprintf('Invalid setting: %s', $key));
             } else {
-                $this->input[$key] = $values[$key] ?? null;
+                $this->settings[$key] = $values[$key] ?? null;
             }
         }
 

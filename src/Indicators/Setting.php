@@ -2,7 +2,7 @@
 
 namespace TheCodeMill\Overline\Indicators;
 
-abstract class Input implements InputContract
+abstract class Setting implements SettingContract
 {
     /**
      * Default value.
@@ -24,7 +24,7 @@ abstract class Input implements InputContract
      * @param mixed $default
      * @return self
      */
-    public function default($default) : InputContract
+    public function default($default) : SettingContract
     {
         $this->default = $default;
 
@@ -37,7 +37,7 @@ abstract class Input implements InputContract
      * @param bool $required
      * @return self
      */
-    public function required(bool $required = true) : InputContract
+    public function required(bool $required = true) : SettingContract
     {
         $this->required = $required;
 
@@ -45,7 +45,7 @@ abstract class Input implements InputContract
     }
 
     /**
-     * Validate a value using the input constraints.
+     * Validate a value using the setting constraints.
      *
      * @param mixed $value
      * @return bool

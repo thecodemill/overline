@@ -1,11 +1,11 @@
 <?php
 
-namespace TheCodeMill\Overline\Indicators\Input;
+namespace TheCodeMill\Overline\Indicators\Setting;
 
-use TheCodeMill\Overline\Indicators\Input;
-use TheCodeMill\Overline\Indicators\InputContract;
+use TheCodeMill\Overline\Indicators\Setting;
+use TheCodeMill\Overline\Indicators\SettingContract;
 
-class Number extends Input
+class Number extends Setting
 {
     /**
      * Min value.
@@ -34,7 +34,7 @@ class Number extends Input
      * @param float $min
      * @return self
      */
-    public function min(float $min) : InputContract
+    public function min(float $min) : SettingContract
     {
         $this->min = $min;
 
@@ -47,7 +47,7 @@ class Number extends Input
      * @param float $max
      * @return self
      */
-    public function max(float $max) : InputContract
+    public function max(float $max) : SettingContract
     {
         $this->max = $max;
 
@@ -60,7 +60,7 @@ class Number extends Input
      * @param float $step
      * @return self
      */
-    public function step(float $step) : InputContract
+    public function step(float $step) : SettingContract
     {
         $this->step = $step;
 
@@ -68,7 +68,7 @@ class Number extends Input
     }
 
     /**
-     * Validate a value using the input constraints.
+     * Validate a value using the setting constraints.
      *
      * @param mixed $value
      * @return bool

@@ -26,7 +26,7 @@ class SMATest extends IndicatorTest
 
         $output = $indicator->compute($input);
 
-        $this->assertEquals($output->count(), 1 + $input->count() - $indicator->getInput('length'));
+        $this->assertEquals($output->count(), 1 + $input->count() - $indicator->getSetting('length'));
         $this->assertEquals($output->first()->getX(), 4);
         $this->assertEquals($output->first()->getY(), 9.4);
         $this->assertEquals($output->last()->getX(), 9);
